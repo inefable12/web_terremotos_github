@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terremotos en Venezuela 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #c0392b, #8e1e1e);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="60">🇻🇪</text></svg>') no-repeat center;
+            opacity: 0.1;
+            font-size: 200px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .alert-banner {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .alert-banner h2 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #16213e, #0f3460);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            border-left: 4px solid #e74c3c;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        .stat-card .number {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #e74c3c;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.95em;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        section {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        section h2 {
+            color: #e74c3c;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        section h3 {
+            color: #f39c12;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .earthquake-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .quake-box {
+            background: #0f3460;
+            border-radius: 10px;
+            padding: 25px;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .quake-box h3 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+
+        .quake-box .magnitude {
+            font-size: 3em;
+            font-weight: bold;
+            color: #f39c12;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .quake-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quake-box ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #1a1a3e;
+        }
+
+        .quake-box ul li strong {
+            color: #e0e0e0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid #0f3460;
+        }
+
+        table th {
+            background: #0f3460;
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        table tr:hover {
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #e74c3c;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: #e74c3c;
+            border-radius: 50%;
+            border: 3px solid #16213e;
+        }
+
+        .timeline-item .date {
+            color: #f39c12;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .effects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .effects-list li {
+            background: #0f3460;
+            padding: 15px 20px;
+            border-radius: 8px;
+            list-style: none;
+            border-left: 3px solid #e74c3c;
+        }
+
+        .effects-list li::before {
+            content: '⚠';
+            margin-right: 10px;
+        }
+
+        .quote-block {
+            background: #0f3460;
+            border-left: 4px solid #f39c12;
+            padding: 20px 25px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        .quote-block .author {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #0f3460;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        .sources {
+            background: #0f3460;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .sources h3 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .sources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sources ul li {
+            padding: 5px 0;
+        }
+
+        .sources ul li a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .sources ul li a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .earthquake-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Terremotos en Venezuela 2026</h1>
+        <p>Informacion sobre los sismos del 24 de junio de 2026</p>
+    </header>
+
+    <div class="container">
+
+        <div class="alert-banner">
+            <h2>ALERTA: TRAGEDIA NACIONAL</h2>
+            <p>Doble terremoto de magnitud 7.2 y 7.5 sacude el centro de Venezuela</p>
+        </div>
+
+        <!-- Estadisticas principales -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="number">7.5</span>
+                <span class="label">Magnitud Maxima (Mw)</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">188+</span>
+                <span class="label">Fallecidos Confirmados</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">1,500+</span>
+                <span class="label">Heridos Registrados</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">12,400+</span>
+                <span class="label">Personas Desplazadas</span>
+            </div>
+        </div>
+
+        <!-- Detalles de los sismos -->
+        <section>
+            <h2>Detalles de los Sismos</h2>
+            <p>El 24 de junio de 2026, Venezuela fue sacudida por un terremoto doblete que constituye uno de los eventos sismicos mas devastadores en la historia reciente del pais. Los dos sismos ocurrieron con apenas un minuto de diferencia, amplificando el dano en una region ya vulnerable.</p>
+
+            <div class="earthquake-detail">
+                <div class="quake-box">
+                    <h3>Primer Sismo (Premonitor)</h3>
+                    <span class="magnitude">7.2 Mw</span>
+                    <ul>
+                        <li><strong>Fecha:</strong> 24 de junio de 2026</li>
+                        <li><strong>Hora:</strong> 6:04 p.m. (hora local)</li>
+                        <li><strong>Profundidad:</strong> 21.9 km</li>
+                        <li><strong>Epicentro:</strong> 21 km al oeste de Moron, Carabobo</li>
+                        <li><strong>Tipo:</strong> Terremoto doblete (evento premonitor)</li>
+                    </ul>
+                </div>
+
+                <div class="quake-box">
+                    <h3>Segundo Sismo (Principal)</h3>
+                    <span class="magnitude">7.5 Mw</span>
+                    <ul>
+                        <li><strong>Fecha:</strong> 24 de junio de 2026</li>
+                        <li><strong>Hora:</strong> Aprox. 6:05 p.m. (hora local)</li>
+                        <li><strong>Profundidad:</strong> 10-13.2 km</li>
+                        <li><strong>Epicentro:</strong> Entre Valencia y San Felipe</li>
+                        <li><strong>Tipo:</strong> Terremoto doblete (evento principal)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zonas afectadas -->
+        <section>
+            <h2>Zonas Afectadas</h2>
+            <p>El movimiento sismico se sintio con gran intensidad en multiples estados del pais y hasta en Colombia. Las zonas mas afectadas incluyeron:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zona</th>
+                        <th>Nivel de Impacto</th>
+                        <th>Dano Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Caracas (Distrito Capital)</td>
+                        <td>Muy Alto</td>
+                        <td>Edificios colapsados, infraestructura danada</td>
+                    </tr>
+                    <tr>
+                        <td>Carabobo (Valencia, Moron)</td>
+                        <td>Muy Alto</td>
+                        <td>Zona cercana al epicentro, colapsos estructurales</td>
+                    </tr>
+                    <tr>
+                        <td>Miranda (Petare, Baruta)</td>
+                        <td>Alto</td>
+                        <td>Viviendas vulnerables, dano en edificaciones</td>
+                    </tr>
+                    <tr>
+                        <td>Aragua (Maracay)</td>
+                        <td>Alto</td>
+                        <td>Grietas en edificios, cortes de servicios</td>
+                    </tr>
+                    <tr>
+                        <td>La Guaira (Vargas)</td>
+                        <td>Alto</td>
+                        <td>Aeropuerto Simon Bolivar danado, carreteras intransitables</td>
+                    </tr>
+                    <tr>
+                        <td>Bolivar, Sucre, Anzoategui, Trujillo</td>
+                        <td>Moderado</td>
+                        <td>Panico generalizado, cortes de energia</td>
+                    </tr>
+                    <tr>
+                        <td>Colombia (Bogota)</td>
+                        <td>Bajo-Moderado</td>
+                        <td>Evacuacion preventiva de edificios</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Consecuencias -->
+        <section>
+            <h2>Consecuencias del Desastre</h2>
+
+            <h3>Victimas Humanas</h3>
+            <p>Hasta la fecha, se han confirmado al menos 188 fallecidos y mas de 1,500 heridos. Las cifras continuan en aumento segun avanzan las labores de rescate en los escombros. Mas de 12,400 personas han sido desplazadas de sus hogares.</p>
+
+            <h3>Dano a la Infraestructura</h3>
+            <ul class="effects-list">
+                <li>Colapso de multiples edificios de apartamentos en Caracas, incluyendo uno de 22 plantas en Altamira</li>
+                <li>Danos estructurales graves en el Aeropuerto Internacional Simon Bolivar</li>
+                <li>Autopista Caracas-La Guaira intransitable por grietas y desprendimientos</li>
+                <li>Corte del servicio de gas en edificios de Caracas por orden del ministro Diosdado Cabello</li>
+                <li>Perdida de servicio electrico en varias zonas del pais</li>
+                <li>Destruccion de centros comercios con caida de estanterias y cristales rotos</li>
+                <li>Grietas visibles en fachadas de multiples estructuras capitalinas</li>
+            </ul>
+
+            <h3>Crisis Humanitaria</h3>
+            <p>La falta de coordinacion en la respuesta inicial, la saturacion de los servicios de emergencia y la vulnerabilidad de zonas populares como Petare agravan la emergencia. La Coordinadora Humanitaria de la ONU activo su protocolo de respuesta de nivel 3, pero el acceso terrestre a zonas rurales sigue restringido.</p>
+        </section>
+
+        <!-- Testimonios -->
+        <section>
+            <h2>Testimonios</h2>
+
+            <div class="quote-block">
+                "Fue subiendo de intensidad. Empece a ver como las ventanas empezaron a moverse y luego se sacudio todo. Mi hermana, una vecina y yo nos quedamos rezando, abrazaditas ahi. No podiamos salir."
+                <span class="author">- Carmen Guedez, 69 anos, Caracas</span>
+            </div>
+
+            <div class="quote-block">
+                "Fue increible, no se ni cuanto tiempo duro. Estaba en el ultimo piso del centro comercial. De unos negocios se cayeron bastantes cosas. Salimos por las escaleras de emergencia, por ahi nos sacaron."
+                <span class="author">- Heidi Romero, 42 anos, comerciante</span>
+            </div>
+
+            <div class="quote-block">
+                "Se desprendieron las escaleras, se rajo toda la pared. Cayeron cosas del techo. Fue horrible."
+                <span class="author">- Odalis Escalona, 54 anos, trabajadora bancaria</span>
+            </div>
+        </section>
+
+        <!-- Contexto historico -->
+        <section>
+            <h2>Contexto Historico Sismico</h2>
+            <p>Venezuela se encuentra sobre el limite entre la Placa del Caribe y la Placa Sudamericana, lo que la convierte en una region con alta actividad sismica. Estos terremotos de 2026 son comparables en magnitud a los eventos mas devastadores del pais:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Fecha</th>
+                        <th>Magnitud</th>
+                        <th>Fallecidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Terremoto de Caracas</td>
+                        <td>29 julio 1967</td>
+                        <td>6.6 - 6.7</td>
+                        <td>~240</td>
+                    </tr>
+                    <tr>
+                        <td>Terremoto de Cumaná</td>
+                        <td>17 enero 1929</td>
+                        <td>6.9</td>
+                        <td>~800</td>
+                    </tr>
+                    <tr>
+                        <td>Terremoto de Cariaco</td>
+                        <td>9 julio 1997</td>
+                        <td>6.9</td>
+                        <td>73</td>
+                    </tr>
+                    <tr>
+                        <td>Terremoto de El Tocuyo</td>
+                        <td>3 agosto 1950</td>
+                        <td>6.8</td>
+                        <td>~100</td>
+                    </tr>
+                    <tr style="background: rgba(231, 76, 60, 0.2); font-weight: bold;">
+                        <td>Terremoto doblete Venezuela</td>
+                        <td>24 junio 2026</td>
+                        <td>7.2 / 7.5</td>
+                        <td>188+ (en curso)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Secuencia Temporal de Eventos Recientes</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="date">Septiembre 2025</div>
+                    <p>Doblete sismico en Zulia y Lara: sismos de 6.2 y 6.3 que causaron al menos 1 muerto, 110 heridos y danos estructurales extensos.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">24 de junio de 2026 - 6:04 p.m.</div>
+                    <p>Primer sismo de magnitud 7.2 (evento premonitor). Epicentro 21 km al oeste de Moron.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">24 de junio de 2026 - ~6:05 p.m.</div>
+                    <p>Segundo sismo de magnitud 7.5 (evento principal). Epicentro entre Valencia y San Felipe. El mas fuerte en la historia reciente de Venezuela.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">24-26 de junio de 2026</div>
+                    <p>El USGS reporta baja probabilidad de replicas superiores a 6.0. La UCV registra 47 replicas superiores a magnitud 4.0 en 72 horas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respuesta gubernamental -->
+        <section>
+            <h2>Respuesta y Acciones</h2>
+            <p>Las autoridades venezolanas declararon estado de emergencia en 12 municipios afectados. El ministro del Interior, Diosdado Cabello, confirmo los danos y ordeno el corte del servicio de gas en edificios de Caracas como medida preventiva.</p>
+            <p>Sin embargo, se han reportado criticas a la respuesta oficial:</p>
+            <ul class="effects-list">
+                <li>Ausencia de un informe oficial detallado en las horas inmediatas al sismo</li>
+                <li>Equipos de Proteccion Civil sin equipos de rescate especializados</li>
+                <li>Falta de mapas actualizados de riesgo sismico</li>
+                <li>Sistema nacional de alerta temprana sismica inoperativo desde 2021</li>
+                <li>Presupuesto insuficiente en organismos de defensa civil</li>
+            </ul>
+            <p>El Servicio Geologico de Estados Unidos (USGS) emitio un aviso de tsunami para partes del Caribe, aunque luego fue descartado. La Coordinadora Humanitaria de la ONU activo su protocolo de respuesta de nivel 3.</p>
+        </section>
+
+        <!-- Fuentes -->
+        <section>
+            <div class="sources">
+                <h3>Fuentes de Informacion</h3>
+                <ul>
+                    <li><a href="https://caracol.com.co/2026/06/25/cuales-han-sido-los-terremotos-mas-fuertes-en-venezuela-magnitud-supero-los-75-y-los-72/" target="_blank">Caracol Radio - Terremotos mas fuertes en Venezuela</a></li>
+                    <li><a href="https://rpp.pe/mundo/venezuela/terremoto-en-venezuela-2026-sismo-de-75-causa-danos-y-colapso-de-edificios-en-caracas-noticia-1694552" target="_blank">RPP - Terremoto de 7.5 en Venezuela</a></li>
+                    <li><a href="https://www.elnacional.com/2026/06/destruccion-y-panico-lo-que-dejaron-los-dos-terremotos-que-sacudieron-venezuela-este-miercoles" target="_blank">El Nacional - Destruccion y panico</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Terremotos_de_Venezuela_de_2026" target="_blank">Wikipedia - Terremotos de Venezuela de 2026</a></li>
+                    <li><a href="https://www.bbc.com/mundo/topics/c9826yr5nept" target="_blank">BBC News Mundo - Terremotos en Venezuela 2026</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Pagina informativa creada con fines de difusion sobre la tragedia sismica en Venezuela.</p>
+        <p>Ultima actualizacion: Junio 2026</p>
+        <p>Las cifras pueden variar segun las fuentes oficiales.</p>
+    </footer>
+
+</body>
+</html>
